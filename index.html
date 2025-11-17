@@ -4,84 +4,624 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Garang Stephen — Portfolio</title>
-
-  <!-- Icons & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  
   <style>
-    /* Reset & base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root{
-      --brand:#0077b6; /* blue */
-      --brand-2:#a9d0d6; /* light teal */
-      --accent:#ff381a; /* coral */
-      --ink:#333; --paper:#f5f7fa; --card:#fff; --gold:#ffb703;
-      --radius:10px; --shadow:0 8px 24px rgba(0,0,0,.08);
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
     }
-    html,body{font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink); background:var(--paper); line-height:1.6;}
-
-    /* Layout */
-    .container{max-width:1100px; margin:auto; padding-inline:20px;}
-    section{padding:72px 0;}
-
-    /* Header */
-    header{position:sticky; top:0; z-index:50; background:var(--brand); color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.12);} 
-    .nav-bar{display:flex; justify-content:space-between; align-items:center; padding:14px 0;}
-    .logo{font-size:1.4rem; font-weight:700; letter-spacing:.3px;}
-    nav ul{list-style:none; display:flex; gap:20px;}
-    nav a{color:#fff; text-decoration:none; font-weight:500}
-    nav a:hover{opacity:.9}
-
-    /* Hero */
-    #hero{background:linear-gradient(180deg,var(--brand-2), #d9ecf0);}
-    .hero-wrap{display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:center;}
-    .profile-img{width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #fff; box-shadow:var(--shadow)}
-    .hero-title{font-size:2rem; margin-bottom:4px}
-    .hero-sub{opacity:.9}
-    .pill{display:inline-block; padding:.25rem .6rem; border-radius:999px; background:#fff; color:var(--brand); border:1px solid var(--brand); font-size:.85rem; margin-right:.5rem}
-    .highlight{color:var(--accent); font-weight:600}
-    .social-links a{margin-right:12px; font-size:1.3rem; color:var(--brand)}
-
-    /* Generic */
-    h2{font-size:1.9rem; margin-bottom:18px}
-    .lead{max-width:800px; opacity:.95}
-    .grid{display:grid; gap:18px}
-
-    /* Cards */
-    .card{background:var(--card); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
-    .card h3{color:var(--brand); margin-bottom:6px}
-    .card .meta{font-weight:600; margin-bottom:10px}
-    .card ul{padding-left:18px}
-
-    /* Resume-y lists */
-    .kvs{display:grid; gap:10px;}
-    .kv{display:grid; grid-template-columns:160px 1fr; gap:10px; align-items:start}
-    .kv .k{font-weight:600; color:#222}
-
-    /* Skills */
-    .skill-chips{display:flex; flex-wrap:wrap; gap:10px}
-    .chip{background:#fff; border:1px solid var(--brand); color:var(--brand); border-radius:999px; padding:8px 12px; font-weight:600}
-
-    /* Footer */
-    footer{background:var(--brand); color:#fff; text-align:center; padding:22px}
-    footer a{color:var(--gold); text-decoration:none}
-
-    /* Responsive */
-    @media (max-width:700px){
-      .hero-wrap{grid-template-columns:1fr; text-align:center}
-      .pill{margin:.25rem .25rem 0 0}
-      .kv{grid-template-columns:1fr}
+    
+    :root {
+      --bg-dark: #0a0e27;
+      --bg-card: #151935;
+      --bg-card-hover: #1a1f3a;
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --secondary: #ec4899;
+      --accent: #f59e0b;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 14, 39, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+    
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--text);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    section {
+      padding: 6rem 0;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+    
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient);
+      opacity: 0.1;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: float 20s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-30px, 30px) rotate(180deg); }
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      display: block;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.4);
+    }
+    
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--primary);
+    }
+    
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .profile-img {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--primary);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+      position: relative;
+      z-index: 1;
+      animation: profileFloat 6s ease-in-out infinite;
+    }
+    
+    @keyframes profileFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+    
+    .card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gradient);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(99, 102, 241, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card:hover::before {
+      transform: scaleY(1);
+    }
+    
+    .card h3 {
+      color: var(--text);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .card .company {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+    
+    .card .date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .card ul li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    .card ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .education-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .gpa-badge {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--primary-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+    
+    .coursework {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(99, 102, 241, 0.1);
+    }
+    
+    .coursework-label {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: var(--gradient);
+      opacity: 0.1;
+      border-radius: 50%;
+      transform: translate(50%, -50%);
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover::after {
+      width: 200px;
+      height: 200px;
+      opacity: 0.15;
+    }
+    
+    .project-card:hover {
+      border-color: rgba(99, 102, 241, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .tech-tag {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary-light);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .skills-grid {
+      display: grid;
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+    
+    .skill-category h3 {
+      color: var(--text);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-category h3 i {
+      color: var(--primary);
+    }
+    
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    
+    .skill-item {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--text);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      background: rgba(10, 14, 39, 0.95);
+      border-top: 1px solid rgba(99, 102, 241, 0.1);
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .social-link:hover {
+      background: var(--gradient);
+      border-color: transparent;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+    
+    .footer-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    .footer-text a {
+      color: var(--primary-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-text a:hover {
+      color: var(--primary);
+    }
+    
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+      
+      .profile-img {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      section {
+        padding: 4rem 0;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header Navigation -->
   <header>
-    <div class="container nav-bar">
-      <h1 class="logo">Garang Stephen</h1>
+    <div class="container">
       <nav>
-        <ul>
+        <div class="logo">GS</div>
+        <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#experience">Experience</a></li>
@@ -93,160 +633,262 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section id="hero">
-    <div class="container hero-wrap">
-      <img src="images/anyuon.jpg" alt="Garang Stephen" class="profile-img" />
-      <div>
-        <h2 class="hero-title">Hi, I'm Garang Stephen</h2>
-        <p class="hero-sub">Computer Science @ Stanford (<span class="highlight">2026</span>). Interests: <span class="highlight">AI</span>, <span class="highlight">Finance</span>, and <span class="highlight">Software Engineering</span>.</p>
-        <div style="margin-top:10px">
-          <span class="pill"><i class="fa-solid fa-location-dot"></i> Bay Area</span>
-          <a class="pill" href="https://www.linkedin.com/in/garang-stephen-a79256236/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-          <a class="pill" href="https://github.com/alokonyin" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
-          <a class="pill" href="mailto:any14483@stanford.edu"><i class="fa-solid fa-envelope"></i> Email</a>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Hi, I'm <span class="gradient-text">Garang Stephen</span></h1>
+          <p class="hero-subtitle">Computer Science @ Stanford. Building end-to-end systems across web, mobile, and AI. Passionate about using technology for equity and education.</p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">3.41</span>
+              <span class="stat-label">GPA</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">Dec 2026</span>
+              <span class="stat-label">Graduation</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">7+</span>
+              <span class="stat-label">Internships</span>
+            </div>
+          </div>
+          
+          <div class="cta-buttons">
+            <a href="mailto:any14483@stanford.edu" class="btn btn-primary">
+              <i class="fas fa-envelope"></i> Get in Touch
+            </a>
+            <a href="https://github.com/alokonyin" target="_blank" class="btn btn-secondary">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="images/anyuon.jpg" alt="Garang Stephen" class="profile-img" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
     <div class="container">
-      <h2>About Me</h2>
-      <p class="lead">I'm a junior at Stanford studying Computer Science. I enjoy building end‑to‑end systems across web, mobile, and data, and I care about using technology for equity and education. I also have strong interests in AI/LLMs, finance, and (for fun) aviation and defense tech.</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="card">
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted);">
+          I'm a junior at Stanford University studying Computer Science with a focus on AI/LLMs, financial systems, and full-stack development. 
+          I have experience across iOS development, web applications, machine learning, and distributed systems. I'm passionate about building 
+          technology that creates equity and improves education. When I'm not coding, I enjoy exploring aviation and defense tech.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Education -->
   <section id="education">
     <div class="container">
-      <h2>Education</h2>
-      <div class="card">
-        <h3>Stanford University — B.S. in Computer Science</h3>
-        <p class="meta">Expected 2026</p>
-        <div class="kvs">
-          <div class="kv"><div class="k">Relevant Coursework</div><div>Data Structures & Algorithms (C++); Introduction to Computer Programming (Python); Linear Algebra with Computational Applications (Python); Operating Systems Principles; Mathematical Foundations of Computing; Spoken Language Processing.</div></div>
+      <h2 class="section-title">Education</h2>
+      <div class="card education-card">
+        <h3>
+          <span class="company">Stanford University</span> — B.S. in Computer Science
+          <span class="gpa-badge">GPA: 3.41</span>
+        </h3>
+        <p class="date">
+          <i class="fas fa-calendar"></i> Expected December 2026
+        </p>
+        <div class="coursework">
+          <span class="coursework-label">Relevant Coursework:</span>
+          <p style="color: var(--text-muted);">
+            Data Structures & Algorithms (C++) • Introduction to Computer Programming (Python) • 
+            Linear Algebra w/Computational Applications (Python) • Operating Systems Principles • 
+            Mathematical Foundations of Computing
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience -->
   <section id="experience">
     <div class="container">
-      <h2>Experience</h2>
-
+      <h2 class="section-title">Experience</h2>
+      
       <div class="card">
-        <h3>Management Science & Engineering — Research Assistant</h3>
-        <p class="meta">June 2025 – September 2025</p>
+        <h3><span class="company">Stanford University</span> — Research Assistant</h3>
+        <p class="date"><i class="fas fa-calendar"></i> June 2025 – September 2025 • Management Science & Engineering</p>
         <ul>
-          <li>Developed Python scripts and docs for large‑scale data acquisition to train AI agents for trend prediction</li>
-          <li>Retrieved and validated the full open‑source dataset <em>stack‑v2‑train‑full‑ids</em> from decentralized sources to support LLM fine‑tuning for financial applications.</li>
+          <li>Automated data acquisition pipelines that reduced dataset preparation time by 60%, enabling faster LLM fine-tuning for financial trend prediction</li>
+          <li>Retrieved and validated 100k+ records from decentralized sources, ensuring 99% data integrity for AI sentiment analysis</li>
+          <li>Authored reproducible documentation and scripts, improving research reproducibility and onboarding efficiency by 40%</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>YesTech Corp - IOS Developer Intern</h3>
-        <p class="meta">June 2024 – September 2024</p>
+        <h3><span class="company">YesTech Corp</span> — iOS Developer Intern</h3>
+        <p class="date"><i class="fas fa-calendar"></i> January 2025 – March 2025</p>
         <ul>
-          <li>Built and deployed new iOS app features with Swift and Firebase, reducing crash reports by 30% through robust testing.</li>
-          <li>Integrated REST APIs to improve app data sync, decreasing average load times from 1.5s to 0.8s.</li>
+          <li>Built and deployed new iOS app features with Swift and Firebase, reducing crash reports by 30% through robust testing</li>
+          <li>Integrated REST APIs to improve app data sync, decreasing average load times from 1.5s to 0.8s</li>
+          <li>Collaborated with product designers to refine UI/UX, leading to a 12% boost in daily active users (DAU)</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>PataKeja Android App — Software Engineer Intern</h3>
-        <p class="meta">February 2023 – July 2023</p>
+        <h3><span class="company">Aloko</span> — Software Engineering Intern</h3>
+        <p class="date"><i class="fas fa-calendar"></i> November 2024 – December 2024</p>
         <ul>
-          <li>Developed responsive front‑end interfaces for a housing listings platform using HTML, CSS, and JavaScript.</li>
-          <li>Designed user‑friendly screens for searching, filtering, and viewing properties.</li>
+          <li>Implemented secure multi-method authentication with Firebase Auth (email + social login), reducing sign-in errors by 45%</li>
+          <li>Developed reusable React/Next.js components and applied state management, improving developer velocity by 25% across teams</li>
+          <li>Optimized backend API calls with Node.js, reducing redundant requests and cutting server costs by 15%</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>Google Product Sprint — Software Engineering Intern</h3>
-        <p class="meta">May 2022 – August 2022</p>
+        <h3><span class="company">Goldman Sachs</span> — Software Engineering Analyst</h3>
+        <p class="date"><i class="fas fa-calendar"></i> May 2024 – June 2024 • Virtual Insight Program</p>
         <ul>
-          <li>Collaborated to design and implement a web application using Java, JavaScript, HTML, and CSS with Google Cloud Platform (App Engine, Datastore/Firestore, Logging, Translation APIs).</li>
-          <li>Built interactive visualizations with real‑time user‑generated data to upload and search nearby restaurants.</li>
+          <li>Prototyped algorithmic trading logic using Java + in-house Slang, simulating strategies with 10% latency reduction compared to baseline</li>
+          <li>Explored distributed systems design, evaluating fault-tolerance approaches to improve system uptime reliability</li>
         </ul>
       </div>
 
+      <div class="card">
+        <h3><span class="company">Google</span> — Software Engineering Intern</h3>
+        <p class="date"><i class="fas fa-calendar"></i> May 2022 – August 2022 • Product Sprint Program</p>
+        <ul>
+          <li>Designed and deployed a web app on Google Cloud (App Engine, Firestore, Logging) serving 1,000+ requests/day for local restaurant search</li>
+          <li>Implemented real-time data visualizations with Java/JavaScript/HTML/CSS, improving search relevance satisfaction scores by 20%</li>
+          <li>Paired with peers in agile sprints, delivering production-ready features under tight deadlines</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="company">PataKeja</span> — Software Engineer Intern</h3>
+        <p class="date"><i class="fas fa-calendar"></i> February 2022 – July 2022</p>
+        <ul>
+          <li>Integrated APIs with frontend and developed pixel-perfect UI for Android housing app, boosting app rating from 3.8 to 4.5 stars</li>
+          <li>Built Python ETL scripts to import 50k+ housing records into PostgreSQL, reducing manual data entry by 90%</li>
+          <li>Collaborated cross-functionally to improve navigation flow, cutting bounce rate by 18%</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects">
     <div class="container">
-      <h2>Projects</h2>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
-        <article class="card">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
           <h3>Vacation Request API</h3>
-          <p class="meta">Python • FastAPI • PostgreSQL • pytest — Spring 2025</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">pytest</span>
+          </div>
+          <p class="date"><i class="fas fa-calendar"></i> Spring 2025</p>
           <ul>
-            <li>Designed a REST API for managing employee vacation requests.</li>
-            <li>Built manager tooling to view, approve, and reject requests with proper validations and tests.</li>
+            <li>Designed end-to-end system for employee leave approvals, gathering feedback from 5 pilot users to iterate on manager workflow design</li>
+            <li>Built REST API for managing employee vacation requests with tools for managers to view, approve, or reject requests</li>
           </ul>
-        </article>
-        <article class="card">
-          <h3>Speech Recognition with Multi‑task Deep Learning</h3>
-          <p class="meta">Python • TensorFlow — Spring 2025</p>
+        </div>
+
+        <div class="project-card">
+          <h3>Speech Recognition with Multi-task Deep Learning</h3>
+          <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">Deep Learning</span>
+          </div>
+          <p class="date"><i class="fas fa-calendar"></i> Spring 2025</p>
           <ul>
-            <li>Built a multi‑task model for phoneme recognition and speaker identification using spectrogram features.</li>
+            <li>Built a multi-task deep learning model for phoneme recognition and speaker identification using spectrogram features</li>
+            <li>Defined problem scope and success metrics for multi-task model, improving accuracy by 15%</li>
           </ul>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
   <section id="skills">
     <div class="container">
-      <h2>Skills</h2>
-      <div class="card">
-        <div class="kvs">
-          <div class="kv">
-            <div class="k">Programming Languages</div>
-            <div class="skill-chips">
-              <span class="chip">Python</span>
-              <span class="chip">C</span>
-              <span class="chip">C++</span>
-              <span class="chip">SQL</span>
-              <span class="chip">HTML/CSS</span>
-              <span class="chip">JavaScript</span>
-              <span class="chip">Swift</span>
-            </div>
+      <h2 class="section-title">Skills & Technologies</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><i class="fas fa-code"></i> Programming Languages</h3>
+          <div class="skill-items">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">C</span>
+            <span class="skill-item">C++</span>
+            <span class="skill-item">Bash</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">HTML/CSS</span>
+            <span class="skill-item">JavaScript</span>
           </div>
-          <div class="kv">
-            <div class="k">Developer Tools & Platforms</div>
-            <div class="skill-chips">
-              <span class="chip">Git</span>
-              <span class="chip">GitHub</span>
-              <span class="chip">Linux</span>
-              <span class="chip">PyCharm</span>
-              <span class="chip">VS Code</span>
-              <span class="chip">Node.js</span>
-              <span class="chip">Docker</span>
-              <span class="chip">macOS</span>
-              <span class="chip">Xcode</span>
-              <span class="chip">PostgreSQL</span>
-              <span class="chip">SQLite</span>
-              <span class="chip">TensorFlow</span>
-              <span class="chip">Firebase Auth</span>
-              <span class="chip">GCP (App Engine, Firestore)</span>
-            </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> Developer Tools</h3>
+          <div class="skill-items">
+            <span class="skill-item">Git</span>
+            <span class="skill-item">GitHub</span>
+            <span class="skill-item">Linux</span>
+            <span class="skill-item">PyCharm</span>
+            <span class="skill-item">VS Code</span>
+            <span class="skill-item">Node.js</span>
+            <span class="skill-item">Docker</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-brain"></i> Data & AI</h3>
+          <div class="skill-items">
+            <span class="skill-item">Dataset Acquisition/Validation</span>
+            <span class="skill-item">LLM Fine-tuning</span>
+            <span class="skill-item">Data Quality Analysis</span>
+            <span class="skill-item">AI Tool Experimentation</span>
+            <span class="skill-item">TensorFlow</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-network-wired"></i> Systems & Networking</h3>
+          <div class="skill-items">
+            <span class="skill-item">Virtualization (VMs)</span>
+            <span class="skill-item">RAID</span>
+            <span class="skill-item">Linux Scripting</span>
+            <span class="skill-item">Storage Protocols</span>
+            <span class="skill-item">AWS</span>
+            <span class="skill-item">TCP/IP</span>
+            <span class="skill-item">OSI Model</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer / Contact -->
   <footer id="contact">
     <div class="container">
-      <p>&copy; 2025 Garang Stephen — <a href="mailto:any14483@stanford.edu">any14483@stanford.edu</a> • <a href="tel:+16504417424">(650) 441‑7424</a></p>
-      <p>Links: <a href="https://www.linkedin.com/in/garang-stephen-a79256236/" target="_blank" rel="noreferrer">LinkedIn</a> • <a href="https://github.com/alokonyin" target="_blank" rel="noreferrer">GitHub</a></p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/garang-stephen-a79256236/" target="_blank" class="social-link" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/alokonyin" target="_blank" class="social-link" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:any14483@stanford.edu" class="social-link" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+16504417424" class="social-link" title="Phone">
+          <i class="fas fa-phone"></i>
+        </a>
+      </div>
+      <div class="footer-text">
+        <p>&copy; 2025 Garang Stephen. All rights reserved.</p>
+        <p>
+          <a href="mailto:any14483@stanford.edu">any14483@stanford.edu</a> • 
+          <a href="tel:+16504417424">(650) 441-7424</a>
+        </p>
+      </div>
     </div>
   </footer>
 </body>
